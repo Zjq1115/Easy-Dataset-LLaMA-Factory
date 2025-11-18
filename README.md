@@ -60,39 +60,39 @@ git clone https://github.com/llm-factory/FinancialData-SecondQuarter-2024.git
 
 在浏览器进入 Easy Dataset 主页后，点击创建项目。
 
-![image-20251118183159824](C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20251118183159824.png)
+![image-20251118183159824](/pics/image-20251118183159824.png)
 
 首先填写**项目名称**（必填），其他两项可留空，点击确认**创建项目**。项目创建后会跳转到**项目设置**页面，打开**模型配置**，选择数据生成时需要调用的大模型 API 接口
 
-![image-20251118183226229](C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20251118183226229.png)
+![image-20251118183226229](/pics/image-20251118183226229.png)
 
 修改模型**提供商**和**模型名称**，填写**API密钥**，点击保存后将数据**保存**到本地，在右上角选择配置好的模型。
 
-![image-20251118183630757](C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20251118183630757.png)
+![image-20251118183630757](/pics/image-20251118183630757.png)
 
 打开**任务配置**页面，设置文本分割长度为最小 500 字符，最大 1000 字符。在问题生成设置中，修改为每 10 个字符生成一个问题，修改后在页面最下方**保存任务配置**。
 
-![image-20251118183646070](C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20251118183646070.png)
+![image-20251118183646070](/pics/image-20251118183646070.png)
 
 打开**文献处理**页面，选择并上传示例数据文件，选择文件后点击**上传并处理文件**。
 
-![image-20251118183702259](C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20251118183702259.png)
+![image-20251118183702259](/pics/image-20251118183702259.png)
 
 上传后会调用大模型解析文件内容并分块，耐心等待文件处理完成，示例数据通常需要 2 分钟左右。待文件处理结束后，可以看到文本分割后的文本段，选择全部文本段，点击**批量生成问题**。
 
-![image-20251118183925072](C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20251118183925072.png)![image-20251118183925238](C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20251118183925238.png)
+![image-20251118183925072](/pics/image-20251118183925072.png)
 
 点击后会调用大模型根据文本块来构建问题，耐心等待处理完成。视 API 速度，处理时间可能在 20-40 分钟不等。处理完成后，打开**问题管理**页面，选择全部问题，点击**批量构造数据集**，耐心等待数据生成。
 
-![image-20251118183948804](C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20251118183948804.png)
+![image-20251118183948804](/pics/image-20251118183948804.png)
 
 答案全部生成结束后，打开数据集管理页面，点击导出数据集，导出数据集到 LLaMA Factory。
 
-![image-20251118184017449](C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20251118184017449.png)
+![image-20251118184017449](/pics/image-20251118184017449.png)
 
 在导出配置中选择在**LLaMA Factory**中使用，点击更新**LLaMA Factory**配置，即可在对应文件夹下生成配置文件，点击复制按钮可以将配置路径复制到粘贴板。
 
-![image-20251118184125339](C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20251118184125339.png)
+![image-20251118184125339](/pics/image-20251118184125339.png)
 
 在配置文件路径对应的文件夹中可以看到生成的数据文件，其中主要关注以下三个文件!
 
@@ -102,7 +102,7 @@ git clone https://github.com/llm-factory/FinancialData-SecondQuarter-2024.git
 
 其中**alpaca**和**sharegpt**格式均可以用来微调，两个文件内容相同。
 
-![image-20251118184155724](C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20251118184155724.png)
+![image-20251118184155724](/pics/image-20251118184155724.png)
 
 ## 二、使用LLaMA Factory微调LLM
 
@@ -119,27 +119,27 @@ export USE_MODELSCOPE_HUB=1 CUDA_VISIBLE_DEVICES=0 && llamafactory-cli webui
 
 点击返回的URL地址，进入Web UI页面。进入 Web UI 界面后，选择模型为 Qwen2.5-3B-Instruct，模型路径可填写本地绝对路径，不填则从互联网下载。
 
-![image-20251118185607292](C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20251118185607292.png)
+![image-20251118185607292](/pics/image-20251118185607292.png)
 
 将数据路径改为使用 Easy Dataset 导出的配置路径，选择 Alpaca 格式数据集。
 
-![image-20251118185614091](C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20251118185614091.png)
+![image-20251118185614091](/pics/image-20251118185614091.png)
 
 为了让模型更好地学习数据知识，将学习率改为 1e-4，训练轮数提高到 8 轮。批处理大小和梯度累计则根据设备显存大小调整，在显存允许的情况下提高批处理大小有助于加速训练，一般保持批处理大小×梯度累积×显卡数量等于 32 即可。
 
-![image-20251118185651521](C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20251118185651521.png)
+![image-20251118185651521](/pics/image-20251118185651521.png)
 
 点击其他参数设置，将保存间隔设置为 50，保存更多的检查点，有助于观察模型效果随训练轮数的变化。
 
-![image-20251118185713246](C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20251118185713246.png)
+![image-20251118185713246](/pics/image-20251118185713246.png)
 
 点击 LoRA 参数设置，将 LoRA 秩设置为 16，并把 LoRA 缩放系数设置为 32。
 
-![image-20251118185719514](C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20251118185719514.png)
+![image-20251118185719514](/pics/image-20251118185719514.png)
 
 点击开始按钮，等待模型下载，一段时间后应能观察到训练过程的损失曲线。
 
-![image-20251118185725729](C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20251118185725729.png)
+![image-20251118185725729](/pics/image-20251118185725729.png)
 
 训练完成后，可验证微调结果。
 
