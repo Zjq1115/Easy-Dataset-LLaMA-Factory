@@ -1,9 +1,7 @@
 # Easy Dataset × LLaMA Factory: 让大模型高效学习领域知识
 
 Easy Dataset 是一个专为创建大型语言模型（LLM）微调数据集而设计的应用程序。它提供了直观的界面，用于上传特定领域的文件，智能分割内容，生成问题，并为模型微调生成高质量的训练数据。支持使用 OpenAI、DeepSeek、火山引擎等大模型 API 和 Ollama 本地模型调用。LLaMA Factory 是一款开源低代码大模型微调框架，集成了业界最广泛使用的微调技术，支持通过 Web UI 界面零代码微调大模型，目前已经成为开源社区最热门的微调框架之一，GitHub 星标超过 4.6 万。支持全量微调、LoRA 微调、以及 SFT 和 DPO 等微调算法。
-* 声明：数据及流程均可公开获得，不涉及任何涉密或隐私信息
-
-本教程使用 Easy Dataset 从五家互联网公司的公开财报构建 SFT 微调数据，并使用 LLaMA Factory 微调 Qwen2.5-3B-Instruct 模型，使微调后的模型能学习到财报数据集中的知识。
+* 声明：数据及流程均可公开获得，不涉及任何涉密或隐私信息，本教程使用 Easy Dataset 从五家互联网公司的公开财报构建 SFT 微调数据，并使用 LLaMA Factory 微调 Qwen2.5-3B-Instruct 模型
 
 * 前提准备：
 
