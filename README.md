@@ -144,4 +144,4 @@ export USE_MODELSCOPE_HUB=1 CUDA_VISIBLE_DEVICES=0 && llamafactory-cli webui
 
 选择检查点路径为刚才的输出目录，打开 Chat 页面，点击加载模型，在下方的对话框中输入问题后，点击提交与模型进行对话，经与原始数据比对发现微调后的模型回答正确。
 ## 参考文档
-https://pai.console.aliyun.com/?regionId=cn-shanghai&spm=5176.12818093_47.resourceCenter.7.47032cc9eSnr3q&workspaceId=949365#/dsw-gallery-workspace/preview/deepLearning/nlp/easy_dataset_llama_factory
+[https://help.aliyun.com/zh/pai/use-cases/chatbot-with-rag-and-web-search](https://pai.console.aliyun.com/?regionId=cn-shanghai&spm=5176.12818093_47.resourceCenter.7.47032cc9eSnr3q&workspaceId=949365#/dsw-gallery-workspace?category=&pageNum=1)
